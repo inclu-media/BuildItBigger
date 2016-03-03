@@ -60,11 +60,4 @@ public class EndpointAsyncTask extends AsyncTask<Context, Void, String> {
             return e.getMessage();
         }
     }
-
-    @Override
-    protected void onPostExecute(String joke) {
-        Intent intent = new Intent(context, JokerActivity.class);
-        intent.putExtra(JokerActivityFragment.THE_JOKE, joke);
-        context.startActivity(intent);
-    }
 }

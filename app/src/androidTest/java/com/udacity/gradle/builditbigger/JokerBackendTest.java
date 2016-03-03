@@ -14,6 +14,7 @@ public class JokerBackendTest extends AndroidTestCase {
             @Override
             protected void onPostExecute(String joke) {
                 assertTrue(joke != null && joke.length() > 0);
+                super.onPostExecute(joke);
             }
         }.execute(getContext());
     }
