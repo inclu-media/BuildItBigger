@@ -20,7 +20,7 @@ import at.inclumedia.jokeractivity.JokerActivityFragment;
 /**
  * Created by Martin Melcher on 03/03/16.
  */
-class EndpointAsyncTask extends AsyncTask<Context, Void, String> {
+public class EndpointAsyncTask extends AsyncTask<Context, Void, String> {
 
     private final static Boolean RUN_LOCALLY = false;
     private final static String LOC_SERVER_URL = "http://10.0.2.2:8080/_ah/api/";
