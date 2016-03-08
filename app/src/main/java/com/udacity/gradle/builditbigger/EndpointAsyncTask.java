@@ -1,10 +1,7 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v4.util.Pair;
-import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -14,15 +11,14 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import java.io.IOException;
 
 import at.inclumedia.joker.backend.myApi.MyApi;
-import at.inclumedia.jokeractivity.JokerActivity;
-import at.inclumedia.jokeractivity.JokerActivityFragment;
+
 
 /**
  * Created by Martin Melcher on 03/03/16.
  */
 public class EndpointAsyncTask extends AsyncTask<Context, Void, String> {
 
-    private final static Boolean RUN_LOCALLY = false;
+    private final static Boolean RUN_LOCALLY = true;
     private final static String LOC_SERVER_URL = "http://10.0.2.2:8080/_ah/api/";
     private final static String REM_SERVER_URL = "https://nano-joker.appspot.com/_ah/api/";
 

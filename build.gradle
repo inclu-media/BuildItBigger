@@ -17,3 +17,11 @@ allprojects {
         jcenter()
     }
 }
+
+task backendTest << {
+    println "Backend test finished ..."
+}
+backendTest.dependsOn ":jokerbackend:appengineRun", ":app:connectedAndroidTest"
+backendTest.mustRunAfter ":jokerbackend:appengineRun"
+backendTest.finalizedBy ":jokerbackend:appengineStop"
+
