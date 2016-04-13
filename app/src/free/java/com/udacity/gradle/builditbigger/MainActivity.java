@@ -18,7 +18,13 @@ import at.inclumedia.jokeractivity.JokerActivityFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    public interface SpinnerHolder {
+        void startSpinner();
+        void stopSpinner();
+    }
+
     private InterstitialAd mInterstitialAd;
+    public SpinnerHolder mSpinnerHolder = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +39,21 @@ public class MainActivity extends AppCompatActivity {
             public void onAdClosed() {
                 requestNewInterstitial();
 
+                // start the spinner
+                if (mSpinnerHolder != null) {
+                    mSpinnerHolder.startSpinner();
+                }
+
                 // load joke and display
                 new EndpointAsyncTask(){
 
                     @Override
                     protected void onPostExecute(String joke) {
+                        // stop the spinner
+                        if (mSpinnerHolder != null) {
+                            mSpinnerHolder.stopSpinner();
+                        }
+
                         Intent intent = new Intent(MainActivity.this, JokerActivity.class);
                         intent.putExtra(JokerActivityFragment.THE_JOKE, joke);
                         startActivity(intent);
@@ -85,5 +101,13 @@ public class MainActivity extends AppCompatActivity {
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         }
+    }
+
+    public void startSpinner() {
+
+    }
+
+    public void stopSpinner() {
+
     }
 }
