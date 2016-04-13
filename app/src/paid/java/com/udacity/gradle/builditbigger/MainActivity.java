@@ -12,6 +12,13 @@ import at.inclumedia.jokeractivity.JokerActivityFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    public interface SpinnerHolder {
+        void startSpinner();
+        void stopSpinner();
+    }
+
+    public SpinnerHolder mSpinnerHolder = null; ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,10 +48,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view){
+        // start the spinner
+        if (mSpinnerHolder != null) {
+            mSpinnerHolder.startSpinner();
+        }
+
         new EndpointAsyncTask(){
 
             @Override
             protected void onPostExecute(String joke) {
+
+                // stop the spinner
+                if (mSpinnerHolder != null) {
+                    mSpinnerHolder.stopSpinner();
+                }
+
                 Intent intent = new Intent(MainActivity.this, JokerActivity.class);
                 intent.putExtra(JokerActivityFragment.THE_JOKE, joke);
                 startActivity(intent);

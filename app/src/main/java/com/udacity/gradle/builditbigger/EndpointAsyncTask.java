@@ -18,7 +18,7 @@ import at.inclumedia.joker.backend.myApi.MyApi;
  */
 public class EndpointAsyncTask extends AsyncTask<Context, Void, String> {
 
-    private final static Boolean RUN_LOCALLY = false;
+    private final static Boolean RUN_LOCALLY = true;
     private final static String LOC_SERVER_URL = "http://10.0.2.2:8080/_ah/api/";
     private final static String REM_SERVER_URL = "https://nano-joker.appspot.com/_ah/api/";
 
